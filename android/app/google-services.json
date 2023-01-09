@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111159286966",
+    "project_id": "picfeed-app",
+    "storage_bucket": "picfeed-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111159286966:android:347e2cc31fc29965bd1a17",
+        "android_client_info": {
+          "package_name": "com.example.picfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111159286966-4hmbhio7uvi5nqffcnmc61js7sisbrdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8bMlaHlWMrZ6TpwICbUfxn1fJ5Q0b_g4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111159286966-4hmbhio7uvi5nqffcnmc61js7sisbrdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

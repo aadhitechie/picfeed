@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>111159286966-5kfk9jg0pcqanm0seocr70bd14p031vf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.111159286966-5kfk9jg0pcqanm0seocr70bd14p031vf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCtalxUNlY1wnyNX3SH5TuLU17rrE0RBLc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>111159286966</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.picfeed</string>
+	<key>PROJECT_ID</key>
+	<string>picfeed-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>picfeed-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:111159286966:ios:ff6aadeaff4e1865bd1a17</string>
+</dict>
+</plist>
