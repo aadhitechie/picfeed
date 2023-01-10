@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:picfeed/screens/signup_screen.dart';
 import 'package:picfeed/utils/colors.dart';
 import 'package:picfeed/widgets/text_input_field.dart';
@@ -14,6 +15,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final Shader linearGradientClr = const LinearGradient(
+    colors: <Color>[
+      Color.fromARGB(255, 68, 211, 218),
+      Color.fromARGB(255, 174, 193, 118)
+    ],
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
   @override
   void dispose() {
     _emailController.dispose();
@@ -34,10 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(),
                 flex: 2,
               ),
-              SvgPicture.asset(
-                'assets/ic_instagram.svg',
-                color: primaryColor,
-                height: 64,
+              Text(
+                'PicFeed',
+                style: GoogleFonts.bebasNeue(
+                    fontSize: 70,
+                    foreground: Paint()..shader = linearGradientClr),
               ),
               const SizedBox(
                 height: 64,
@@ -64,7 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {},
                 child: Container(
                   // ignore: sort_child_properties_last
-                  child: const Text('Log in'),
+                  child: const Text(
+                    'LOGIN',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w900),
+                  ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -74,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Radius.circular(4),
                       ),
                     ),
-                    color: blueColor,
+                    color: Colors.lightGreen,
                   ),
                 ),
               ),
@@ -105,7 +117,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       // ignore: sort_child_properties_last
                       child: const Text(
                         'Sign up',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 8),
                     ),

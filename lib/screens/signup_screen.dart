@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:picfeed/screens/login_screen.dart';
 import 'package:picfeed/utils/colors.dart';
 import 'package:picfeed/widgets/text_input_field.dart';
@@ -16,7 +17,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
-
+  final Shader linearGradientClr = const LinearGradient(
+    colors: <Color>[
+      Color.fromARGB(255, 68, 211, 218),
+      Color.fromARGB(255, 174, 193, 118)
+    ],
+  ).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
   @override
   void dispose() {
     _emailController.dispose();
@@ -35,17 +41,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: ListView(
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Flexible(
-                child: Container(),
-                flex: 2,
-              ),
-              SvgPicture.asset(
-                'assets/ic_instagram.svg',
-                color: primaryColor,
-                height: 60,
-              ),
               const SizedBox(
-                height: 30,
+                height: 25,
+              ),
+              Text(
+                'PicFeed',
+                style: GoogleFonts.bebasNeue(
+                    fontSize: 60,
+                    foreground: Paint()..shader = linearGradientClr),
+                textAlign: TextAlign.center,
+              ),
+              // SvgPicture.asset(
+              //   'assets/ic_instagram.svg',
+              //   color: primaryColor,
+              //   height: 60,
+              // ),
+              const SizedBox(
+                height: 40,
               ),
               Stack(
                 alignment: Alignment.center,
@@ -53,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const CircleAvatar(
                     radius: 64,
                     backgroundImage: NetworkImage(
-                      'https://t3.ftcdn.net/jpg/00/73/08/76/240_F_73087609_FQe2v1GvOicbFDHiUokmueGfW2Fi5IDB.jpg',
+                      'https://images.pexels.com/photos/8542019/pexels-photo-8542019.jpeg?auto=compress&cs=tinysrgb&w=1600',
                     ),
                   ),
                   Positioned(
@@ -70,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
               const SizedBox(
-                height: 6,
+                height: 10,
               ),
               TextFieldInput(
                 textEditingController: _usernameController,
@@ -112,7 +124,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onTap: () {},
                 child: Container(
                   // ignore: sort_child_properties_last
-                  child: const Text('Log in'),
+                  child: const Text(
+                    'Log in',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w900, color: Colors.black),
+                  ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -122,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Radius.circular(4),
                       ),
                     ),
-                    color: blueColor,
+                    color: Colors.lightGreen,
                   ),
                 ),
               ),
@@ -155,10 +171,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ],
-              ),
-              Flexible(
-                child: Container(),
-                flex: 2,
               ),
             ],
           ),
