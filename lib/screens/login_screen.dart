@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:picfeed/resources/auth_methods.dart';
 import 'package:picfeed/screens/signup_screen.dart';
-import 'package:picfeed/utils/colors.dart';
+
+import 'package:picfeed/utils/utils.dart';
 import 'package:picfeed/widgets/text_input_field.dart';
+
+import '../responsive/mobile_screen_layout.dart';
+import '../responsive/responsive_layout_screen.dart';
+import '../responsive/web_screen_layout.dart';
+
+GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +23,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
   final Shader linearGradientClr = const LinearGradient(
     colors: <Color>[
       Color.fromARGB(255, 68, 211, 218),
@@ -25,6 +34,35 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (res == "success") {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayout(
+            webScreenLayout: WebScreenLayout(),
+            mobileScreenLayout: MobileScreenLayout(),
+          ),
+        ),
+      );
+    } else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  void navigateToSignUp() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const SignUpScreen()));
   }
 
   @override
@@ -69,14 +107,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24,
               ),
               InkWell(
-                onTap: () {},
+                onTap: loginUser,
                 child: Container(
                   // ignore: sort_child_properties_last
-                  child: const Text(
-                    'LOGIN',
-                    style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w900),
-                  ),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : const Text(
+                          'LOGIN',
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w900),
+                        ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -106,13 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      );
-                    },
+                    onTap: navigateToSignUp,
                     child: Container(
                       // ignore: sort_child_properties_last
                       child: const Text(
@@ -126,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               )
             ],
