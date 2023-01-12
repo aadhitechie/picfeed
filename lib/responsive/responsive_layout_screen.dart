@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:picfeed/providers/user_provider.dart';
 import 'package:picfeed/responsive/mobile_screen_layout.dart';
 import 'package:picfeed/responsive/web_screen_layout.dart';
-import 'package:picfeed/utils/dimension.dart';
+import 'package:picfeed/utils/global_variables.dart';
 import 'package:provider/provider.dart';
 
 class ResponsiveLayout extends StatefulWidget {
